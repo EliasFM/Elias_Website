@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 {% extends "base.html" %}
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,18 +23,19 @@
                         <ul
                             tabindex="0"
                             class="menu dropdown-content bg-base-100 rounded-box z-[1] mt-4 w-52 p-2 shadow">
-                            <li><a>Projects</a></li>
-                            <li><a>Photos</a></li>
+                            <li><a href="#projects">Projects</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
         <header>
+          <div class="join join-vertical">
             <div
-                class="hero min-h-screen relative"
+                id="hero"
+                class="hero min-h-screen relative transition-all duration-500"
                 style="background-image: url(/static/assets/SouthAfricanFevertree.jpg);">
-                <div class="hero-overlay bg-opacity-60"></div>
+                <div class="hero-overlay bg-opacity-30"></div>
                 <div class="hero-content text-neutral-content text-center">
                     <div class="max-w-md">
                         <h1 class="mb-5 text-5xl font-bold">Elias Mendel</h1>
@@ -47,51 +47,34 @@
                     </div>
                 </div>
             </div>
+            <div class="join join-horizontal ">
+                <button id="btnFevertree" class="btn btn-neutral rounded-none join-item">Fevertree Sunrise</button>
+                <button id="btnElephant" class="btn btn-neutral rounded-none join-item">Elephant Approaching</button>
+                <button id="btnDusk" class="btn btn-neutral rounded-none join-item">Dusk</button>
+                <button id="btnDustyElephant" class="btn btn-neutral rounded-none join-item">Dusty Elephant</button>
+                <button id="btnLioness" class="btn btn-neutral rounded-none join-item">Wandering Lioness</button>
+            </div>
+          </div>
         </header>
     </div>
 
-<section class="container mx-auto my-10">
+<section id="projects" class="w-full mx-auto my-10">
   <h2 class="text-3xl font-bold text-center mb-6">My Projects</h2>
   <div class="carousel w-full space-x-4 p-4 flex overflow-x-scroll snap-x snap-mandatory">
-      <!-- Card 1 -->
-      <div class="carousel-item snap-center flex-shrink-0">
-          <div class="card w-96 bg-base-100 shadow-xl">
-              <figure><img src="/static/assets/project1.jpg" alt="Project 1" class="w-full h-48 object-cover"></figure>
-              <div class="card-body">
-                  <h3 class="card-title">Project 1</h3>
-                  <p>A brief description of Project 1.</p>
-                  <div class="card-actions justify-end">
-                      <a href="#" class="btn btn-primary">View Project</a>
-                  </div>
-              </div>
-          </div>
+    {% for project in projects %}
+    <div class="carousel-item snap-center flex-shrink-0">
+      <div class="card w-96 bg-base-300 shadow-xl">
+        <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.description }}</p>
+            <div class="card-actions justify-end">
+              <a role="button" href="{{project.github_link}}" class="btn btn-primary">Github</a>
+              <a role="button" href="{{project.link}}" class="btn btn-primary">Open Project</a>
+            </div>
+        </div>
       </div>
-      <!-- Card 2 -->
-      <div class="carousel-item snap-center flex-shrink-0">
-          <div class="card w-96 bg-base-100 shadow-xl">
-              <figure><img src="/static/assets/project2.jpg" alt="Project 2" class="w-full h-48 object-cover"></figure>
-              <div class="card-body">
-                  <h3 class="card-title">Project 2</h3>
-                  <p>A brief description of Project 2.</p>
-                  <div class="card-actions justify-end">
-                      <a href="#" class="btn btn-primary">View Project</a>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="carousel-item snap-center flex-shrink-0">
-          <div class="card w-96 bg-base-100 shadow-xl">
-              <figure><img src="/static/assets/project3.jpg" alt="Project 3" class="w-full h-48 object-cover"></figure>
-              <div class="card-body">
-                  <h3 class="card-title">Project 3</h3>
-                  <p>A brief description of Project 3.</p>
-                  <div class="card-actions justify-end">
-                      <a href="#" class="btn btn-primary">View Project</a>
-                  </div>
-              </div>
-          </div>
-      </div>
+    </div>
+    {% endfor %}
   </div>
 </section>
 
@@ -113,5 +96,27 @@
       </nav>
     </footer>
 </body>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hero = document.getElementById('hero');
+
+    // Background image map
+    const backgrounds = {
+      btnFevertree: '/static/assets/SouthAfricanFevertree.jpg',
+      btnDustyElephant: '/static/assets/DustSprayedElephant.jpg',
+      btnDusk: '/static/assets/BWLightRays.jpg',
+      btnElephant: '/static/assets/HDR_Elephant.jpg',
+      btnLioness: '/static/assets/Lioness_Valley.jpg',
+    };
+
+    // Add event listeners to buttons
+    Object.keys(backgrounds).forEach((buttonId) => {
+      document.getElementById(buttonId).addEventListener('click', () => {
+        hero.style.backgroundImage = `url('${backgrounds[buttonId]}')`;
+      });
+    });
+  });
+</script>
 {% endblock page_content %}
+
 </html>
