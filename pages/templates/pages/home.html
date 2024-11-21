@@ -33,7 +33,7 @@
       <div
         id="hero"
         class="hero min-h-screen relative transition-all duration-500"
-        style="background-image: url(/static/assets/SouthAfricanFevertree.jpg);">
+        style="background-image: url({% static 'assets/SouthAfricanFevertree.jpg' %});">
         <div class="hero-overlay bg-opacity-35"></div>
         <div class="hero-content text-neutral-content text-center">
           <div class="max-w-md">
@@ -104,17 +104,17 @@
 
     // Background image map
     const backgrounds = {
-      btnFevertree: '/static/assets/SouthAfricanFevertree.jpg',
-      btnDustyElephant: '/static/assets/DustSprayedElephant.jpg',
-      btnDusk: '/static/assets/BWLightRays.jpg',
-      btnElephant: '/static/assets/HDR_Elephant.jpg',
-      btnLioness: '/static/assets/Lioness_Valley.jpg',
+      btnFevertree: '/assets/SouthAfricanFevertree.jpg',
+      btnDustyElephant: '/assets/DustSprayedElephant.jpg',
+      btnDusk: '/assets/BWLightRays.jpg',
+      btnElephant: '/assets/HDR_Elephant.jpg',
+      btnLioness: '/assets/Lioness_Valley.jpg',
     };
 
     // Add event listeners to buttons
     Object.keys(backgrounds).forEach((buttonId) => {
       document.getElementById(buttonId).addEventListener('click', () => {
-        hero.style.backgroundImage = `url('${backgrounds[buttonId]}')`;
+        hero.style.backgroundImage = `url({% static '${backgrounds[buttonId]}' %})`;
       });
     });
   });
