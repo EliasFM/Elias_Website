@@ -1,11 +1,16 @@
 [project]
 name = "elias-website"
 version = "0.1.0"
-description = "Add your description here"
+description = "Elias Portfolio Website"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "dj-database-url>=2.3.0",
     "django>=5.1.2",
+    "gunicorn>=23.0.0",
+    "psycopg2-binary>=2.9.10",
+    "uvicorn>=0.32.1",
+    "whitenoise[brotli]>=6.8.2",
 ]
 
 [dependency-groups]
