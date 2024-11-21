@@ -3,12 +3,13 @@
 set -o errexit
 
 # Modify this line as needed for your package manager (pip, poetry, etc.)
-curl -LsSf https://astral.sh/uv/install.sh | sh
-source $HOME/.local/bin/env
-uv sync --no-dev --locked
+# curl -LsSf https://astral.sh/uv/install.sh | sh
+# source $HOME/.local/bin/env.sh
+# uv sync --no-dev --locked
+pip install -r requirements.txt
 
 # Convert static asset files
-uv run python manage.py collectstatic --no-input
+python manage.py collectstatic --no-input
 
 # Apply any outstanding database migrations
-uv run python manage.py migrate
+python manage.py migrate
