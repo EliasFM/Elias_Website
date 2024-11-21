@@ -3,6 +3,7 @@
 set -o errexit
 
 # Modify this line as needed for your package manager (pip, poetry, etc.)
+curl -LsSf https://astral.sh/uv/install.sh | sh
 uv sync --no-dev --locked
 
 # Convert static asset files
