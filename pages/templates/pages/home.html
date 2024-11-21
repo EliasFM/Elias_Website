@@ -2,82 +2,84 @@
 <html lang="en">
 {% extends "base.html" %}
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Home</title>
 </head>
 {% block page_content %}
 <body class="flex flex-col min-h-screen">
-    <!-- Page Content -->
-    <div class="flex-grow">
-        <div class="navbar bg-base-300 bg-opacity-100 rounded-box sticky top-0 z-10">
-            <div class="flex-1 px-2 lg:flex-none">
-                <a class="text-lg font-bold">Elias Mendel</a>
-            </div>
-            <div class="flex flex-1 justify-end px-2">
-                <div class="flex items-stretch">
-                    <div class="dropdown dropdown-end">
-                      <label tabindex="0" class="btn btn-ghost">
-                        Menu
-                      </label>
-                        <ul
-                            tabindex="0"
-                            class="menu dropdown-content bg-base-100 rounded-box z-[1] mt-4 w-52 p-2 shadow">
-                            <li><a href="#projects">Projects</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <header>
-          <div class="join join-vertical">
-            <div
-                id="hero"
-                class="hero min-h-screen relative transition-all duration-500"
-                style="background-image: url(/static/assets/SouthAfricanFevertree.jpg);">
-                <div class="hero-overlay bg-opacity-30"></div>
-                <div class="hero-content text-neutral-content text-center">
-                    <div class="max-w-md">
-                        <h1 class="mb-5 text-5xl font-bold">Elias Mendel</h1>
-                        <p class="mb-5 text-2xl">
-                            Software Engineer. Data Enthusiast. Photographer.
-                        </p>
-                        <a href="{{ MEDIA_URL }}Resume_Elias_Mendel_Software_Engineer.pdf" class="btn btn-primary"
-                            download>Download My Resume</a>
-                    </div>
-                </div>
-            </div>
-            <div class="join join-horizontal ">
-                <button id="btnFevertree" class="btn btn-neutral rounded-none join-item">Fevertree Sunrise</button>
-                <button id="btnElephant" class="btn btn-neutral rounded-none join-item">Elephant Approaching</button>
-                <button id="btnDusk" class="btn btn-neutral rounded-none join-item">Dusk</button>
-                <button id="btnDustyElephant" class="btn btn-neutral rounded-none join-item">Dusty Elephant</button>
-                <button id="btnLioness" class="btn btn-neutral rounded-none join-item">Wandering Lioness</button>
-            </div>
+  <!-- Page Content -->
+  <div class="flex-grow">
+    <div class="navbar bg-base-300 bg-opacity-100 rounded-box sticky top-0 z-10">
+      <div class="flex-1 px-2 lg:flex-none">
+        <a class="text-lg font-bold">Elias Mendel</a>
+      </div>
+      <div class="flex flex-1 justify-end px-2">
+        <div class="flex items-stretch">
+          <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-ghost">
+              Menu
+            </label>
+            <ul
+              tabindex="0"
+              class="menu dropdown-content bg-base-100 rounded-box z-[1] mt-4 w-52 p-2 shadow">
+              <li><a href="#projects">Projects</a></li>
+            </ul>
           </div>
-        </header>
+        </div>
+      </div>
     </div>
+    <header>
+      <div
+        id="hero"
+        class="hero min-h-screen relative transition-all duration-500"
+        style="background-image: url(/static/assets/SouthAfricanFevertree.jpg);">
+        <div class="hero-overlay bg-opacity-35"></div>
+        <div class="hero-content text-neutral-content text-center">
+          <div class="max-w-md">
+            <h1 class="mb-5 text-5xl font-bold">Elias Mendel</h1>
+            <p class="mb-5 text-2xl">
+              Software Engineer. Data Enthusiast. Photographer.
+            </p>
+            <a href="{{ MEDIA_URL }}Resume_Elias_Mendel_Software_Engineer.pdf" class="btn btn-primary"
+              download>Download My Resume</a>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown dropdown-top">
+        <label tabindex="0" class="btn btn-secondary">
+          Change Background (A Selection of My Photography)
+        </label>
+        <ul tabindex="0" class="menu dropdown-content bg-base-100 rounded-box shadow">
+          <li><a id="btnFevertree">Fevertree Sunrise</a></li>
+          <li><a id="btnElephant">Elephant Approaching</a></li>
+          <li><a id="btnDusk">Dusk</a></li>
+          <li><a id="btnDustyElephant">Dusty Elephant</a></li>
+          <li><a id="btnLioness">Wandering Lioness</a></li>
+        </ul>
+      </div>
+    </header>
+  </div>
 
-<section id="projects" class="w-full mx-auto my-10">
-  <h2 class="text-3xl font-bold text-center mb-6">My Projects</h2>
-  <div class="carousel w-full space-x-4 p-4 flex overflow-x-scroll snap-x snap-mandatory">
-    {% for project in projects %}
-    <div class="carousel-item snap-center flex-shrink-0">
-      <div class="card w-96 bg-base-300 shadow-xl">
-        <div class="card-body">
+  <section id="projects" class="w-full mx-auto my-10">
+    <h2 class="text-3xl font-bold text-center mb-6">My Projects</h2>
+    <div class="carousel w-full space-x-4 p-4 flex overflow-x-scroll snap-x snap-mandatory">
+      {% for project in projects %}
+      <div class="carousel-item snap-center flex-shrink-0">
+        <div class="card w-96 bg-base-300 shadow-xl">
+          <div class="card-body">
             <h5 class="card-title">{{ project.title }}</h5>
             <p class="card-text">{{ project.description }}</p>
             <div class="card-actions justify-end">
               <a role="button" href="{{project.github_link}}" class="btn btn-primary">Github</a>
               <a role="button" href="{{project.link}}" class="btn btn-primary">Open Project</a>
             </div>
+          </div>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
-</section>
-
+  </section>
     <!-- Footer -->
     <footer class="footer bg-base-300 bg-opacity-100 text-neutral-content items-center p-4">
       <aside class="grid-flow-col items-center">
@@ -118,5 +120,4 @@
   });
 </script>
 {% endblock page_content %}
-
 </html>
