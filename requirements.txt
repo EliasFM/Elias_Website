@@ -10,3 +10,5 @@ packaging==24.2
     # via gunicorn
 sqlparse==0.5.2
     # via django
+whitenoise==6.8.2
+    # via elias-website (pyproject.toml)
